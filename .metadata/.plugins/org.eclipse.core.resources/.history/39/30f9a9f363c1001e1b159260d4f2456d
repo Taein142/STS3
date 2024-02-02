@@ -1,0 +1,17 @@
+Spring Legacy Project
+1. pom.xml 변경(각종 라이브러리 버전)
+	java: 11
+	springframework-version : 5.3.20
+	aspectj-version : 1.9.6
+	slf4k-version : 2.0.9
+	servlet-api -> javax.serlet-api(artifactedId)
+					version : 3.1.0
+	maven-compiler-plugin  comfiguration : 30801
+		source: 11
+		target: 11
+	
+2. Properties 변경
+	Project Facets
+		- Dynamic Web Module : 4.0
+		- Java : 11
+		- Runtime : Apache Tamcat 체크

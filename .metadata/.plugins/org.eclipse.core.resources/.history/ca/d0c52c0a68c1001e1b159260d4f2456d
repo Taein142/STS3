@@ -1,0 +1,5 @@
+package com.icia.jsp01.dto;
+
+public class DataDTO {
+
+}

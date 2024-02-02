@@ -1,0 +1,37 @@
+Spring Legacy Project
+1. pom.xml 변경(각종 라이브러리 버전)
+	java: 11
+	springframework-version : 5.3.20
+	aspectj-version : 1.9.6
+	slf4k-version : 2.0.9
+	servlet-api -> javax.serlet-api(artifactedId)
+					version : 3.1.0
+	maven-compiler-plugin  configuration : 30801
+		source: 11
+		target: 11
+	
+2. Properties 변경
+	Project Facets
+		- Dynamic Web Module : 4.0
+		- Java : 11
+		- Runtime : Apache Tamcat 체크
+			
+3. 한글 인코딩 처리
+	web.xml에 다음을 추가
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>

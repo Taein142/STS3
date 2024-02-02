@@ -1,0 +1,3 @@
+servlet-context
+prefix + 파일명 + suffix
+-> /WEB-INF/views/home.jsp

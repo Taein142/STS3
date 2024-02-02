@@ -1,0 +1,33 @@
+package com.icia.jsp01;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.icia.jsp01.dto.DataDTO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Controller
+public class HomeController {
+	
+	@GetMapping
+	public String home(Model model) {
+		log.info("home()");
+		// front-end로 데이터를 보낸 때 사용하는 객체 - Model
+		// DispatcherServlet이 생성하여 보내는 객체
+		model.addAttribute("data", "서버에서 보내는 문자열");
+		model.addAttribute("num", 100);
+		
+		DataDTO dataDTO = new DataDTO();
+		dataDTO.setCode(1);
+		dataDTO.setStrDataString("홍길동");
+		dataDTO.setNumData(23);
+		dataDTO.setDataData("2000-01-05");
+		model.addAttribute("person1", dataDTO)
+		;		
+		return "home";
+	}
+	
+}

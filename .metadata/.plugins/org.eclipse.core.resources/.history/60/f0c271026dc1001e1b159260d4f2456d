@@ -1,0 +1,77 @@
+Spring Legacy Project
+1. pom.xml 변경(각종 라이브러리 버전)
+	java: 11
+	springframework-version : 5.3.20
+	aspectj-version : 1.9.6
+	slf4k-version : 2.0.9
+	servlet-api -> javax.serlet-api(artifactedId)
+					version : 3.1.0
+	maven-compiler-plugin  configuration : 30801
+		source: 11
+		target: 11
+	
+2. Properties 변경
+	Project Facets
+		- Dynamic Web Module : 4.0
+		- Java : 11
+		- Runtime : Apache Tamcat 체크
+			
+3. 한글 인코딩 처리
+	web.xml에 다음을 추가
+	-----------------------------------------------
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	------------------------------------------------
+	
+Lombok 설치
+1. lombok 다운로드 후 실행하여 개발도구(sts)에 설치
+2. maven repository에서 해당 라이브러리를 복사하여 pom.xml에 추가
+
+	lombok 활용
+	1) getter와 setter 자동 생성
+	2) log 출력용 라이브러리 Slf4j(Log)
+	
+-----------------------------------------------------
+
+MVC 패턴
+1. Controller (요청에 따른 기능의 분류)
+2. Service (요청에 해당하는 기능을 제공)
+3. DAO (Data Access Object, DB의  CRUD를 처리)
+4. DTO (Data Transfer Object, data를 담아서 옮기는 역할을 담당
+	vo (Value Object)
+	entity (DB 테이블과 매칭하여 사용하는 객체)
+
+----------------------------------------------------------
+
+JSP(Java Server Page)
+	JSP = HTML + Java
+	페이지의 java 코드가 컴파일되어 하나의 클래스로 변환되어 실행.
+	이 클래스를 servlet 클래스라고 함.(자바로 만들어진 웹용 클래스)
+
+JSP 핵심요소
+1. Directive(지시자)
+	
+	
+2. El(Expression Language)
+	
+	
+3. JSTL(Jsp Standard Tag Library
+
+
+기본 객체
+	request, response, session
