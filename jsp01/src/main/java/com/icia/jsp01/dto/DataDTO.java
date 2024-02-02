@@ -11,6 +11,6 @@ public class DataDTO {
 	private int code; // 데이터 번호
 	private String strData;
 	private int numData;
-	private String dataData;
+	private String dateData;
 
 }

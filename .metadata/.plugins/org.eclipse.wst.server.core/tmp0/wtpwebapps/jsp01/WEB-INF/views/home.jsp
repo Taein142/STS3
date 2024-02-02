@@ -17,7 +17,7 @@
 <p> 번호: ${person1.code}</p>
 <p> 이름: ${person1.strData}</p>
 <p> 나이: ${person1.numData}</p>
-<p> 생일: ${person1.dataData}</p>
+<p> 생일: ${person1.dateData}</p>
 
 <a href="mavCase">[이동]</a>
 </body>

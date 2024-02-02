@@ -2,4 +2,5 @@
 <aop-reference-model>
 <aop-project name="spring-first"/>
 <aop-project name="jsp01"/>
+<aop-project name="jsp01_practice"/>
 </aop-reference-model>

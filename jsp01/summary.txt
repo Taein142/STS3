@@ -102,6 +102,10 @@ JSP 핵심요소
 	Post 방식으로 전송하는 경우
 		전송 데이터가 노출되지 않아야 할 경우
 		데이터가 많을 경우
+		
+	PathVariable 방식
+	URI에 데이터를 함께 보내는 방식.(parameter와는 다른 방식)
+	URL/{data}
 	
 	
 3. JSTL(Jsp Standard Tag Library

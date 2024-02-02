@@ -3,6 +3,7 @@ package com.icia.jsp01;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,7 +28,7 @@ public class HomeController {
 		dataDTO.setCode(1);
 		dataDTO.setStrData("홍길동");
 		dataDTO.setNumData(23);
-		dataDTO.setDataData("2000-01-05");
+		dataDTO.setDateData("2000-01-05");
 		model.addAttribute("person1", dataDTO);
 
 		return "home";
@@ -49,7 +50,7 @@ public class HomeController {
 		dataDTO.setCode(2);
 		dataDTO.setStrData("아무개");
 		dataDTO.setNumData(30);
-		dataDTO.setDataData("1995-02-05");
+		dataDTO.setDateData("1995-02-05");
 
 		mv.addObject("person2", dataDTO);
 
@@ -70,11 +71,28 @@ public class HomeController {
 		return "redirect:/";
 	}
 
-	@PostMapping("/login")
+	@GetMapping("/login")
 	public String loginProc(String id, String pw) {
 		log.info("loginProc()");
 		log.info("id: " + id);
 		log.info("pw: " + pw);
+
+		return "home";
+	}
+
+	@PostMapping("dtoSend")
+	public String dtoSend(DataDTO data, Model model) {
+		log.info("dtoSend()");
+		model.addAttribute("person1", data);
+
+		return "home";
+	}
+
+	@GetMapping("pathSend/{data1}/{data2}")
+	public String pathSend(@PathVariable String data1, @PathVariable String data2) {
+		log.info("pathSend()");
+		log.info("data1: " + data1);
+		log.info("data2: " + data2);
 
 		return "redirect:/";
 	}

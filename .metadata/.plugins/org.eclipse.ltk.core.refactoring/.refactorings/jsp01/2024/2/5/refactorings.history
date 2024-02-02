@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;dataData&apos; in &apos;com.icia.jsp01.dto.DataDTO&apos; to &apos;dateData&apos;&#x0D;&#x0A;- Original project: &apos;jsp01&apos;&#x0D;&#x0A;- Original element: &apos;com.icia.jsp01.dto.DataDTO.dataData&apos;&#x0D;&#x0A;- Renamed element: &apos;com.icia.jsp01.dto.DataDTO.dateData&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings&#x0D;&#x0A;- Rename getter method for field&#x0D;&#x0A;- Rename setter method for field" delegate="false" deprecate="false" description="Rename field &apos;dataData&apos;" flags="589826" getter="true" id="org.eclipse.jdt.ui.rename.field" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.icia.jsp01.dto{DataDTO.java[DataDTO^dataData" name="dateData" references="true" setter="true" stamp="1706855264350" textual="true" version="1.0"/>
+</session>
