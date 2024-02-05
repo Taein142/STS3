@@ -3,4 +3,5 @@
 <aop-project name="spring-first"/>
 <aop-project name="jsp01"/>
 <aop-project name="jsp01_practice"/>
+<aop-project name="jsp02"/>
 </aop-reference-model>

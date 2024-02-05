@@ -49,8 +49,9 @@
 	logbtn.onclick = function() {
 		let idv = idinput.value;
 		let pwv = qwinput.value;
-		let str = "login?id=" + idv + "&pw=" + pwv;
-		location.href = str;
+		location.href=`login?id=\${idv}&pw=\${pwv}`;
+		/* let str = "login?id=" + idv + "&pw=" + pwv; */
+		/* location.href = str; */
 		/* location.href = `login?id=${idinput.value}&pw=${qwinput.value}`; */	
 	}
 </script>
