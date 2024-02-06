@@ -30,7 +30,10 @@
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 		<item key="renameGetter" value="true"/>
 		<item key="renameSetter" value="true"/>
-		<item key="updateTextualMatches" value="true"/>
+		<item key="updateTextualMatches" value="false"/>
+		<item key="renameSubpackages" value="false"/>
+		<item key="updateQualifiedNames" value="false"/>
+		<item key="patterns" value="*"/>
 	</section>
 	<section name="RefactoringWizard.preview">
 		<item key="width" value="600"/>

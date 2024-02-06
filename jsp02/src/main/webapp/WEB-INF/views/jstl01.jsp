@@ -77,6 +77,7 @@
 	</c:forEach>
 </ul>
 
-
+<hr>
+<a href="today">[이동2]</a>
 </body>
 </html>

@@ -84,7 +84,15 @@ Format 라이브러리
  	
  	
  	formatNumber : 숫자 출력 형식 지정
-	
+	 	주요 속성
+ 		- value : 숫자 데이터
+ 		- pattern : 출력 형식을 임의로 지정
+ 		- groupingUsed : 세자리 마다 ',' 출력 설정(기본값 true)
+ 		- type : percent, currency(통화)
+ 		- currencySymbol : 통화 기호 지정
+ 		
+ 여러 jsp 파일을 하나로... (표준 액션 태그)
+ 	<jsp:include page="xxx.jsp" />
 	
 	
 web.xml 파일 밑에 넣어둘 것.

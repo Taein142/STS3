@@ -59,5 +59,8 @@
 	</table>
 	<hr>
 	<a href="jstl_1">[이동]</a>
+	
+	<hr>
+	<jsp:include page="today.jsp"/>
 </body>
 </html>

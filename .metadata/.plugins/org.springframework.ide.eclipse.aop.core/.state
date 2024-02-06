@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="jsp02_practice"/>
 <aop-project name="spring-first"/>
+<aop-project name="movieinfo"/>
 <aop-project name="jsp01"/>
 <aop-project name="jsp01_practice"/>
 <aop-project name="jsp02"/>
+<aop-project name="movieinfo_practice"/>
 </aop-reference-model>
