@@ -42,7 +42,108 @@ MyBatis로 처리되는 인스턴스는 스프링 프레임워크에 등록된�
 @Autowired 어노테이션
 컴포넌트 인스턴스를 자동으로 주입 또는 수거하도록 지정하는 어노테이션.
 
+------------------------20240207
+페이징(페이지네이션. Pagination) 처리
+	전체 콘텐츠를 여러 페이지로 나우어 페이지 번호를 부여하고,
+	'이전', '다음' 버튼으로 이동하는 방식.
+	MySQL의 limit를 활용.
+	
+	전체 페이지 개수 = 전체 콘텐츠 / 페이지 당 보여질 콘텐츠 개수
+		이 때, 나머지가 0이 아닐 경우 1페이지 추가
+		
+	페이지 번호(버튼)은 <a> 태그를 활용.
+	
+StringBuffer 객체
+	문자열 처리를 위한 공간을 제공하는 객체.
+	문자열을 붙이거나 자르거나 등의 수정이 많은 경우 활용하는 객체.
+	
+Session
+	클라이언트가 서버에 접속하게 되면 각 클라이언트별로 할당되는 공간.
+	(일종의 클라이언트와 서버간의 통로를 나타내는 단어.
+	메모리를 사용하기 때문에 공간이라 표현.)
 
+	인터넷의 통신 메커니즘 : Best Effort 방식.
+		3 handshaking 방식
+		요청 -> 응답 -> 클라이언트 데이터 전송 -> 서버 응답
+	로그인 상황을 유지하지 않는다!
+	로그인 상황을 유지하기 윈한 로그인 성공 정보를 어딘가에 저장해서 사용.
+	1) 성공 정보를 클라이언트에서 저장. - 쿠키(cookie)
+	2) 서버에서 저장하는 방식. - session
+	
+MyBatis 표현식
+	SQL 쿼리문을 실행하는 객체 - Statement 객체
+	MyBatis는 PreparsedStatement 객체를 새용
+	
+	JDBC 프로그래밍
+	1. 드라이버 로딩
+	2. Connection 수립(프로그램 <-> DB)
+	3. SQL 문 실행 결과 처리
+		Statement는 쿼리 실행
+		ResultSet은 select 결과 저장 객체
+	4. Connection 해제
+	
+MyBatis 운영 방식
+	미완성된 쿼리문에 데이터를 주입하는 방식.
+	
+	MyBatis 표현식
+	1) #{식별자}
+		식별자 - (DAO 메소드에서 작성한)매개변수.
+				Map의 key, Dto의 멤버변수.
+		쿼리문에서 사용하는 값(데이터).
+		문자열일 경우 자동으로 데이터 앞 뒤에 '를 붙임.
+		숫자일 경우 그대로 입력.
+				
+	2) ${식별자}
+		쿼리문에서 사용하는 컬럼명, 테이블명에서 사용
+		문자열, 숫자 상관없이 그대로 입력.
+		예를 들어, 검색 기능을 구현할 때 
+		
+		SELECT * FROM mlist
+		WHERE m_name LIKE '%범죄%';
+		- 감독 검색 쿼리
+		SELECT * FROM mlist
+		WHERE m_director LIKE '%스티븐%';
+		
+		-> mybatis map 작성시
+		SELECT * FROM mlist
+		WHERE ${colmn_name} LIKE CONCAT('%', #{keyword}, '%');
+		
+MyBatis 쿼리맵 태그
+	<tag_name id="method_name" parameterType="type"
+				resultType="return_type">
+		sql쿼리문
+	</tag_name>
+	
+	- tag_name : select, insert, update, delete
+	- id : Dao 메소드의 이름.
+	- parameterType : Dao 메소드의 매개변수 자료형
+					매개변수가 여러 개일 경우 생략 가능.
+					(매개변수를 여러 개 사용하지 말고 Map으로 묶자.)
+					
+	- resultType : Dao 메소드의 반환형.
+					반환형이 List인 경우 '<'와 '>' 사이에 작성하는 자료형을 작성.
+					ex) List<String> -> resultType="String"
+form을 통한 데이터 전송
+	Multipart 데이터 = 텍스트 + 파일(2진데이터)
+	
+	form 태그에 enctype을 작성. 속성값은 "multipart/form-data"
+	(enctype="multipart/form-data")
+	
+	파일 업로드 용 라이브러리(dependency)
+	1) commons-io
+	2) commons-fileupload
+	
+	servlet-context.xml에 업로드 용량 제한 등의 설정을 작성.
+	
+파일 input 태그로 받는 파일을 복수(배열/리스트)로 취급한다.
+(multiple 속성 때문.)
+
+Form에 파일 input 태그가 존재할 경우 List<MultipartFile>의 size는 1이 된다.
+즉, 파일을 업로드 하거나 안하거나 동일한 size가 된다.
+파일 업로드가 됨을 확인하는 방법이 필요한데,
+	1) 파일 자체의 크기를 확인하는 방법
+	2) 파일명을 확인하는 방법
+	3) 기타... (isEmpty 메소드)
 
 	
 	

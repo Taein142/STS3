@@ -4,6 +4,18 @@
   
 <mapper namespace="com.icia.movieinfo.dao.MovieDao">
 	<select id="getMovieList" resultType="movie">
+	<!-- 파라미터 타입 생략 됨. parameterType = "HashMap" -->
 		SELECT * FROM mlist
+		LIMIT #{pageNum}, #{listCnt}
 	</select>
+	
+	<insert id="insertMovie" parameterType="movie">
+		INSERT INTO movietbl 
+		VALUES (
+		null, #{m_name}, #{m_director}, 
+		#{m_nation}, #{m_genre}, #{m_actor}, 
+		#{m_open}, #{m_synopsis}, #{p_sysname}
+		);
+		<!-- m_code -->
+	</insert>
 </mapper>
