@@ -1,7 +1,0 @@
-servlet-context
-prefix + 파일명 + suffix
--> /WEB-INF/views/home.jsp
-
-RequestMapping과 GetMapping/PostMapping의 차이
-- RequestMapping은 클래스와 메소드에서 모두 사용.
-- Get/PostMapping은 메소드에서만 사용.

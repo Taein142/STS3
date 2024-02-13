@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <div class="top-bar">
 	<img alt="로고" src="resources/images/mlogo.png"
-		class="logo" onclick="location.href='/'">
+		class="logo" onclick="location.href='/movieinfo/'">
 	<h2>영화정보 사이트</h2>
 </div>

@@ -1,0 +1,17 @@
+-- 삭제 쿼리
+DROP TABLE datatbl;
+DROP SYNONYM dt;
+DROP SEQUENCE seq_dt;
+
+-- 생성 쿼리
+-- 테이블
+CREATE TABLE datatbl (
+	m_code 	NUMBER PRIMARY KEY, -- 자동증가 컬럼, 시퀀스 사용
+	m_str	NVARCHAR2(10) NOT NULL,
+	m_int	NUMBER NOT NULL,
+	m_date	DATE NOT NULL
+);
+-- 동의어(SYNONYM)
+CREATE SYNONYM dt FOR datatbl;
+-- 시퀀스(Sequence)
+CREATE SEQUENCE seq_dt;

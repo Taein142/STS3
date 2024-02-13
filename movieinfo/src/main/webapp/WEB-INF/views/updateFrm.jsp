@@ -1,0 +1,105 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/style.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	crossorigin="anonymous"></script>
+	<script>
+        $(function () {
+            let m = "${msg}";
+            if(m != ""){
+                alert(m);
+            }
+            
+          	//파일 업로드 시 선택한 파일명 출력
+            $("#file").on("change", function () {
+                //파일 입력창(input type=file)에서 파일 목록 가져오기
+                let files = $("#file")[0].files;
+                console.log(files);
+
+                let fileName = "";
+
+                if(files.length == 1) {
+                    fileName = files[0].name;
+                }
+                else {//파일 선택 창에서 '취소' 버튼을 클릭
+                    fileName = "파일선택";
+                }
+
+                $(".upload-name").val(fileName);
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="wrap">
+	<jsp:include page="header.jsp"/>
+	<div class="content">
+		<form action="updateProc" method="post"
+			  enctype="multipart/form-data">
+			<h2 class="form-header">영화 정보 수정</h2>
+			<input type="hidden" name="m_code" value="${movie.m_code}">
+			<input type="text" class="write-input" value="${movie.m_name}"
+				   name="m_name" autofocus placeholder="제목"
+				   required>
+			<input type="text" class="write-input" value="${movie.m_director}"
+				   name="m_director" placeholder="감독"
+				   required>
+			<input type="text" class="write-input" value="${movie.m_nation}"
+				   name="m_nation" placeholder="국가"
+				   required>
+			<input type="text" class="write-input" value="${movie.m_genre}"
+				   name="m_genre" placeholder="장르"
+				   required>
+			<input type="text" class="write-input" value="${movie.m_actor}"
+				   name="m_actor" placeholder="주연배우"
+				   required>
+			<input type="text" class="write-input" value="${movie.m_open}"
+				   name="m_open" placeholder="개봉일"
+				   required>
+			<textarea rows="10" class="write-input ta" name="m_synopsis"
+					  placeholder="영화 개요">${movie.m_synopsis}</textarea>
+			<input type="hidden" value="${movie.p_sysname}" name="p_sysname">
+			<div class="detail">
+				<div class="detail-sub">
+					<div class="detail-title">포스터</div>
+					<div class="detail-content">
+						<c:if test="${empty movie.p_sysname}">
+						<img class="poster" src="resources/images/no_image.jpg">
+						</c:if>
+						<c:if test="${!empty movie.p_sysname}">
+							<img class="poster" src="resources/upload/${movie.p_sysname}">
+						</c:if>
+					</div>
+				</div>
+			</div>
+			<div class="filebox">
+				<!-- 수정 파일 입력 처리 영역 -->
+				<label for="file">업로드</label>
+				<input type="file" name="files" id="file"
+					   multiple>
+				<input type="text" class="upload-name"
+					   value="파일선택" readonly>
+			</div>
+			<div class="btn-area">
+				<input type="submit" class="btn-write" value="U">
+				<input type="reset" class="btn-write" value="R">
+				<input type="button" class="btn-write" value="B" id="backbtn">
+			</div>
+		</form>
+	</div>
+	<jsp:include page="footer.jsp"/>
+</div>
+</body>
+<script>
+	$("#backbtn").click(function () {
+		location.href = `./detail?m_code=${movie.m_code}`;
+	});
+</script>
+</html>
